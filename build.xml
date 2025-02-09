@@ -23,7 +23,7 @@
     <!-- Resolve Dependencies Using ivysettings.xml -->
     <target name="resolve" depends="ivy-settings">
         <mkdir dir="${lib.dir}"/>
-        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].jar"/>
+        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]"/>
     </target>
 
     <!-- Generate Dependency Report -->
