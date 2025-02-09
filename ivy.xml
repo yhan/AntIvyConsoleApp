@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-    <info organisation="com.example" module="AntConsoleApp"/>
+    <info organisation="com.example" module="AntIvyConsoleApp"/>
 <!--    <dependencies>-->
 <!--        <dependency org="org.apache.commons" name="commons-lang3" rev="3.12.0"/>-->
 <!--    </dependencies>-->
