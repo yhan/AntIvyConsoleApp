@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AntConsoleApp" default="resolve" basedir="."
+         xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <!-- Define Directories -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="lib.dir" value="lib"/>
+
+    <!-- Register Ivy Task -->
+    <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
+        <classpath>
+            <pathelement location="${lib.dir}/ivy-2.5.3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <!-- Load Ivy Settings -->
+    <target name="ivy-settings">
+        <ivy:settings file="ivysettings.xml"/>
+    </target>
+
+    <!-- Resolve Dependencies Using ivysettings.xml -->
+    <target name="resolve" depends="ivy-settings">
+        <mkdir dir="${lib.dir}"/>
+        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].jar"/>
+    </target>
+
+    <!-- Define Compiler -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Run the Application -->
+    <target name="run" depends="compile">
+        <java classname="Main" fork="true">
+            <classpath>
+                <pathelement location="${build.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </java>
+    </target>
+
+</project>

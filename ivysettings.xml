@@ -1,0 +1,7 @@
+<ivysettings>
+    <settings defaultResolver="maven-central"/>
+
+    <resolvers>
+        <ibiblio name="maven-central" m2compatible="true"/>
+    </resolvers>
+</ivysettings>
