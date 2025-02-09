@@ -24,3 +24,8 @@ File > Project Structure ...
 2. Once specified dependencies in ivy.xml file, right click on ivy.xml or ivysettings.xml:
 
 ![image](https://github.com/user-attachments/assets/0d8fecd8-e943-43b7-894f-9dd46e7becc2)
+
+3. build Ivy report to show dependencies tree
+   ```
+   ant report
+   ```
