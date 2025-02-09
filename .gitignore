@@ -2,6 +2,7 @@
 out/
 lib/
 .idea/
+build/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
