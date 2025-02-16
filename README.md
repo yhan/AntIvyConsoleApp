@@ -16,6 +16,8 @@ ant run
 ```
 Ivy
 --
+
+## Setup
 1. Add Ivy Module:  
 File > Project Structure ...
 ![image](https://github.com/user-attachments/assets/a8d207c6-dece-4d90-99c1-bf6bcc7fb521)
@@ -29,3 +31,11 @@ File > Project Structure ...
    ```
    ant report
    ```
+
+## Configure ant target in intellij
+
+`Run > Edit configurations: `  
+
+![image](https://github.com/user-attachments/assets/caf170f4-9bd5-466a-9036-899ec9c149af)
+
+
