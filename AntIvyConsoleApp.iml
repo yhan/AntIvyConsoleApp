@@ -6,9 +6,11 @@
         <option name="configsToResolve">
           <set>
             <option value="default" />
+            <option value="test" />
           </set>
         </option>
         <option name="ivyFile" value="$MODULE_DIR$/ivy.xml" />
+        <option name="onlyResolveSelectedConfigs" value="true" />
       </configuration>
     </facet>
   </component>
@@ -16,20 +18,40 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="IvyIDEA">
         <CLASSES>
           <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.12.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-core/jars/spring-core-5.3.10.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-jcl/jars/spring-jcl-5.3.10.jar!/" />
         </CLASSES>
         <JAVADOC>
           <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.commons/commons-lang3/javadocs/commons-lang3-3.12.0-javadoc.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-core/javadocs/spring-core-5.3.10-javadoc.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-jcl/javadocs/spring-jcl-5.3.10-javadoc.jar!/" />
         </JAVADOC>
         <SOURCES>
           <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.commons/commons-lang3/sources/commons-lang3-3.12.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-core/sources/spring-core-5.3.10-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.springframework/spring-jcl/sources/spring-jcl-5.3.10-sources.jar!/" />
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

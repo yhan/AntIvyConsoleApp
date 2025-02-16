@@ -5,8 +5,13 @@
     <!-- Define Directories -->
     <property name="src.dir" value="src"/>
     <property name="build.dir" value="build"/>
+
+    <property name="test.dir" value="test"/>
+    <property name="test.build.dir" value="${build.dir}/test-classes"/>
+
     <property name="lib.dir" value="lib"/>
     <property name="report.dir" value="${build.dir}/reports"/>
+
 
     <!-- Register Ivy Task -->
     <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
@@ -32,11 +37,11 @@
         <ivy:report todir="${report.dir}"/>
     </target>
 
-    <!-- Define Compiler -->
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
+    <!-- Compile Main Source Code -->
     <target name="compile">
         <mkdir dir="${build.dir}"/>
         <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
@@ -47,6 +52,44 @@
             </classpath>
         </javac>
     </target>
+
+    <!-- Compile Test Classes -->
+    <target name="compile-test" depends="compile">
+        <mkdir dir="${test.build.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath>
+                <pathelement location="${build.dir}"/>
+
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="clean-test">
+        <delete dir="${build.dir}/test-results"/>
+    </target>
+
+    <!-- Run test-->
+    <target name="test" depends="compile-test">
+        <mkdir dir="${build.dir}/test-results"/>
+
+        <java classname="org.junit.platform.console.ConsoleLauncher" fork="true">
+            <classpath>
+                <pathelement location="${build.dir}/test-classes"/>  <!-- ✅ Test compiled classes -->
+                <pathelement location="${build.dir}"/>
+                <fileset dir="${lib.dir}">  <!-- ✅ Include JUnit 5 JARs -->
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+
+            <arg value="--scan-classpath"/>
+            <arg value="--reports-dir=${build.dir}/test-results"/>
+
+        </java>
+    </target>
+
 
     <!-- Run the Application -->
     <target name="run" depends="compile">
