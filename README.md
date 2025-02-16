@@ -229,12 +229,12 @@ It only looks at the test folder and its manually assigned dependencies.
 ![image](https://github.com/user-attachments/assets/f50e3a21-91cb-4771-8068-d8f3bf77308d)
 
 
-🛠 Fix 1: Mark test as a Test Source Root
-1️⃣ Right-click on the test folder in IntelliJ.
-2️⃣ Select "Mark Directory as" → "Test Sources".
-3️⃣ The test folder should turn green (indicating it's a test source root).
+🛠 Fix 1: Mark test as a Test Source Root  
+1️⃣ Right-click on the test folder in IntelliJ.  
+2️⃣ Select "Mark Directory as" → "Test Sources".  
+3️⃣ The test folder should turn green (indicating it's a test source root).  
 4️⃣ Rebuild the project:
 
-Click Build → Rebuild Project
-OR run Ctrl + Shift + F9 (Recompile)
-🚀 Now IntelliJ should recognize and compile your test files!
+Click Build → Rebuild Project  
+OR run Ctrl + Shift + F9 (Recompile)  
+🚀 Now IntelliJ should recognize and compile your test files!  
