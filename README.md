@@ -41,7 +41,7 @@ File > Project Structure ...
 
 Troubleshoot
 --
-## Java home
+## 1. Java home
 if you installed sudo apt install java, you may have:
 ```
 yhan@yhan-XPS-15-9500:~/IdeaProjects/AntConsoleApp$ ls /usr/bin/java
@@ -80,7 +80,7 @@ java -cp "build:build/test-classes:lib/*" org.junit.platform.console.ConsoleLaun
 ```
 
 
-## JUnit 
+## 2. JUnit 
 Trap:  
 > ant has his default junit 4 
 
@@ -162,7 +162,7 @@ Change the build.xml
     </target>
 ```
 
-## added junit lib to dependencies, now test run correctly in intellij
+## 3. added junit lib to dependencies, now test run correctly in intellij
 Problem is that Intellij does not look for the junit dependencies correctly.  
 
 After have done `ant resolve`, the dependencies are in `./lib` folder.   
@@ -224,7 +224,7 @@ IntelliJ does NOT read compile-test target when resolving classpaths for test co
 It only looks at the test folder and its manually assigned dependencies.   
 
 
-## IntelliJ IDEA is not recognizing your test folder as a valid source root, meaning your test files won’t be compiled.
+## 4. IntelliJ IDEA is not recognizing your test folder as a valid source root, meaning your test files won’t be compiled.
 
 ![image](https://github.com/user-attachments/assets/f50e3a21-91cb-4771-8068-d8f3bf77308d)
 
