@@ -58,8 +58,8 @@
         <mkdir dir="${test.build.dir}"/>
         <javac srcdir="${test.dir}" destdir="${test.build.dir}" includeantruntime="false">
             <classpath>
-                <pathelement location="${build.dir}"/>
-
+                <pathelement location="${build.dir}"/> <!-- ✅ Compiled production code -->
+                <pathelement location="${test.build.dir}"/>
                 <fileset dir="${lib.dir}">
                     <include name="**/*.jar"/>
                 </fileset>
