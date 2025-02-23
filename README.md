@@ -235,6 +235,24 @@ It only looks at the test folder and its manually assigned dependencies.
 3️⃣ The test folder should turn green (indicating it's a test source root).  
 4️⃣ Rebuild the project:
 
-Click Build → Rebuild Project  
+Click Build → Rebuild Project  [Main.class](../temp/org/apache/ivy/Main.class)
 OR run Ctrl + Shift + F9 (Recompile)  
 🚀 Now IntelliJ should recognize and compile your test files!  
+
+
+## 5. ivy jar should be part of source code
+
+``` show ivy version
+java -jar ./ivylib/ivy-2.5.3.jar -version
+```
+Ivy the dependency resolver for ant. The ivy jar should be available for the resolving system.  
+In build.xml, we have:  
+
+```xml
+ <!-- Register Ivy Task -->
+    <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
+        <classpath>
+            <pathelement location="${ivylib.dir}/ivy-2.5.3.jar"/>
+        </classpath>
+    </taskdef>
+```

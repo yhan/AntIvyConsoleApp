@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="AntIvyConsoleApp" default="resolve" basedir="."
+<project name="AntIvyConsoleApp" default="ivy-resolve" basedir="."
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
     <!-- Define Directories -->
@@ -10,13 +10,14 @@
     <property name="test.build.dir" value="${build.dir}/test-classes"/>
 
     <property name="lib.dir" value="lib"/>
+    <property name="ivylib.dir" value="ivylib"/>
     <property name="report.dir" value="${build.dir}/reports"/>
 
 
     <!-- Register Ivy Task -->
     <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
         <classpath>
-            <pathelement location="${lib.dir}/ivy-2.5.3.jar"/>
+            <pathelement location="${ivylib.dir}/ivy-2.5.3.jar"/>
         </classpath>
     </taskdef>
 
@@ -25,14 +26,29 @@
         <ivy:settings file="ivysettings.xml"/>
     </target>
 
-    <!-- Resolve Dependencies Using ivysettings.xml -->
-    <target name="resolve" depends="ivy-settings">
+    <target name="ivy-clean">
+        <echo message="Cleaning Ivy dependencies..." />
+
+        <!-- Remove downloaded dependencies from the project's lib directory -->
+        <delete dir="${lib.dir}" failonerror="false"/>
+
+        <!-- Remove Ivy cache (optional, forces re-download) -->
+        <delete dir="${user.home}/.ivy2/cache" failonerror="false"/>
+    </target>
+
+
+    <target name="ivy-resolve" depends="ivy-clean">
+        <echo message="Resolving Ivy dependencies..." />
+
+        <!-- Ensure the lib directory exists before retrieving dependencies -->
         <mkdir dir="${lib.dir}"/>
+
+        <!-- Retrieve dependencies based on the ivy.xml file -->
         <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]"/>
     </target>
 
     <!-- Generate Dependency Report -->
-    <target name="report" depends="resolve">
+    <target name="report" depends="ivy-resolve">
         <mkdir dir="${report.dir}"/>
         <ivy:report todir="${report.dir}"/>
     </target>
