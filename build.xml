@@ -13,6 +13,9 @@
     <property name="ivylib.dir" value="ivylib"/>
     <property name="report.dir" value="${build.dir}/reports"/>
 
+    <property name="dist.dir" value="dist"/>
+    <property name="jar.name" value="AntIvyConsoleApp.jar"/>
+
 
     <!-- Register Ivy Task -->
     <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
@@ -105,6 +108,16 @@
             <arg value="--reports-dir=${build.dir}/test-results"/>
 
         </java>
+    </target>
+
+    <!-- Create JAR file -->
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/${jar.name}" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
     </target>
 
 

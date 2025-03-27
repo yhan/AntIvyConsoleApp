@@ -12,4 +12,5 @@ public class LinkedHashMapLRUExample {
 
         System.out.println(cache); // Output: {3=C, 1=A, 4=D}
     }
+
 }

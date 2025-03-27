@@ -1,10 +1,10 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.lang.invoke.VarHandle;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,60 +18,46 @@ public class MainTest {
     @Test
     public void testFoo() {
 
-        assertEquals("Hello, World!", Foo.greet());
+        assertEquals("Hello, World!", Hello.greet());
+    }
+
+    @Test
+    public void testStringEquality() {
+        String greeting = "Hello";
+        assertTrue(greeting == "Hello");
+        assertFalse(greeting.substring(0, 3) == "Hel");
+
+        greeting = greeting + "!";
+        assertFalse(greeting == "Hello!");
+    }
+
+    @Test
+    public void testIntStream() {
+        List<Integer> list = IntStream.rangeClosed(1, 5)
+                .boxed()
+                .collect(Collectors.toList());
+
+        int[] arr = new int[3];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+
+        for (int i : arr) {
+            System.out.println(i);
+        }
+        
+        Arrays.stream(arr)
+                .filter(e -> e > 1)
+                .forEach(System.out::println);
+    }
+    
+    @Test
+    public void StringBlock() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("""
+                hello
+                world""");
+        System.out.println(stringBuilder);
     }
 }
 
-class SteamTest {
-    @Test
-    public void testFoo() {
-        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-        names.forEach(System.out::println); // Like C# foreach with lambda
-
-        List<String> filtered = names.stream()
-                .filter(name -> name.startsWith("A"))
-                .toList();
-    }
-
-    @Test
-    public void testBar() {
-        String text = "A😀"; // Contains 'A' and the emoji  The second code point is the :)
-        System.out.println(text.charAt(0));
-        System.out.println(text.charAt(1));
-        System.out.println(text.charAt(2)); // code unit ( utf 16)
-
-        // Code Point at index 1 (emoji)
-        int codePoint = text.codePointAt(1);
-        System.out.println("Code Point at index 1: " + codePoint + " (Hex: " + Integer.toHexString(codePoint) + ")");
-
-        // Convert Code Point to String
-        String emoji = new String(Character.toChars(0x1F600)); // 😀
-        System.out.println(emoji);
-    }
-
-    @Test
-    public void primitive() {
-
-        long startTime = System.nanoTime();
-        int sum = 0;
-        for (int i = 0; i < 1000000; i++) {
-            sum += i; // Fast
-        }
-        System.out.println("Time with int: " + (System.nanoTime() - startTime));
-
-        startTime = System.nanoTime();
-        Integer sumInteger = 0;
-        for (int i = 0; i < 1000000; i++) {
-            sumInteger += i; // Slower (boxing & unboxing overhead)
-        }
-        System.out.println("Time with Integer: " + (System.nanoTime() - startTime));
-    }
-
-    @Test
-    public void Hello() {
-        File secret = new File("/etc/passwd"); // ⚠️ Trying to access a system file
-        System.out.println(secret.exists());   // ❌ Blocked by Security Manager
-    }
-
-
-}
