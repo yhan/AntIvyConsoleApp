@@ -16,5 +16,8 @@
         <dependency org="org.junit.platform" name="junit-platform-console-standalone" rev="1.8.1" conf="test->default"/>
 
         <dependency org="org.junit.platform" name="junit-platform-engine" rev="1.8.1" conf="test"/>
+
+        <dependency org="org.openjdk.jmh" name="jmh-core" rev="1.37"/>
+        <dependency org="org.openjdk.jmh" name="jmh-generator-annprocess" rev="1.37" conf="default->default"/>
     </dependencies>
 </ivy-module>

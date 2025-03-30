@@ -60,11 +60,13 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <!-- Compile Main Source Code -->
+    <!-- Compile Source Code -->
     <target name="compile">
         <mkdir dir="${build.dir}"/>
         <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
             <include name="**/*.java"/>
+<!--            <compilerarg value="-processor" />-->
+<!--            <compilerarg value="org.openjdk.jmh.generators.BenchmarkProcessor" />-->
             <classpath>
                 <fileset dir="${lib.dir}">
                     <include name="**/*.jar"/>
@@ -115,7 +117,7 @@
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/${jar.name}" basedir="${build.dir}">
             <manifest>
-                <attribute name="Main-Class" value="Main"/>
+                <attribute name="pkg.yhan.Main-Class" value="pkg.yhan.Main"/>
             </manifest>
         </jar>
     </target>
@@ -123,7 +125,7 @@
 
     <!-- Run the Application -->
     <target name="run" depends="compile">
-        <java classname="Main" fork="true">
+        <java classname="pkg.yhan.Main" fork="true">
             <classpath>
                 <pathelement location="${build.dir}"/>
                 <fileset dir="${lib.dir}">
