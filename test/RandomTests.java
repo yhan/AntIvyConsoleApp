@@ -22,11 +22,11 @@ public class RandomTests {
         System.out.println(text.charAt(1));
         System.out.println(text.charAt(2)); // code unit ( utf 16)
 
-        // Code Point at index 1 (emoji)
+        // Code pkg.default2.pkg.default.Point at index 1 (emoji)
         int codePoint = text.codePointAt(1);
-        System.out.println("Code Point at index 1: " + codePoint + " (Hex: " + Integer.toHexString(codePoint) + ")");
+        System.out.println("Code pkg.default2.pkg.default.Point at index 1: " + codePoint + " (Hex: " + Integer.toHexString(codePoint) + ")");
 
-        // Convert Code Point to String
+        // Convert Code pkg.default2.pkg.default.Point to String
         String emoji = new String(Character.toChars(0x1F600)); // 😀
         System.out.println(emoji);
     }

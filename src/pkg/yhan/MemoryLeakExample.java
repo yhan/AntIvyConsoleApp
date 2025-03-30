@@ -1,3 +1,5 @@
+package pkg.yhan;
+
 public class MemoryLeakExample {
     public static void main(String[] args) {
         EventSource eventSource = new EventSource();

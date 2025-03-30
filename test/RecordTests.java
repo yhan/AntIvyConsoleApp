@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
+import pkg.yhan.Point;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

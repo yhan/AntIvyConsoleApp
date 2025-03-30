@@ -1,6 +1,5 @@
-package pkg2;
-
-import pkg1.Hello;
+package pkg.yhan.pkg2;
+import pkg.yhan.pkg1.*;
 
 public class World {
     void echo(){

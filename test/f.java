@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import pkg.yhan.Dish;
+import pkg.yhan.time.Person;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -69,9 +71,9 @@ class CollectionTests{
         /// a class with parameters ctor
         // won't compile: parameterless ctor is supressed!
         // Ploof ploof = new Ploof();
-        Employee employee = new Employee(10_000);
-        assertEquals("Employee #" + 1000, employee.strId);
-        assertEquals(10_000, employee.salary);
+        Person person = new Person(10_000);
+        assertEquals("pkg.default2.pkg.default.Employee #" + 1000, person.strId);
+        assertEquals(10_000, person.salary);
     }
 
     @Test

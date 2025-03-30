@@ -1,4 +1,4 @@
-package lru;
+package pkg.yhan.lru;
 
 public class LinkedHashMapLRUExample {
     public static void main(String[] args) {

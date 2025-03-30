@@ -1,4 +1,4 @@
-package pkg1;
+package pkg.yhan.pkg1;
 
 public class World{
     void echo(){

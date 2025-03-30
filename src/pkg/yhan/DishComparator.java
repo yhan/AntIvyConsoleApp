@@ -1,3 +1,5 @@
+package pkg.yhan;
+
 import java.util.Comparator;
 
 public class DishComparator implements Comparator<Dish> {

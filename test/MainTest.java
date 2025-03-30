@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
+import pkg.yhan.Hello;
 
-import java.lang.invoke.VarHandle;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,17 +18,17 @@ public class MainTest {
     @Test
     public void testFoo() {
 
-        assertEquals("Hello, World!", Hello.greet());
+        assertEquals("pkg.default2.pkg1.pkg.default.Hello, pkg.default2.pkg1.pkg.default.World!", Hello.greet());
     }
 
     @Test
     public void testStringEquality() {
-        String greeting = "Hello";
-        assertTrue(greeting == "Hello");
+        String greeting = "pkg.default2.pkg1.pkg.default.Hello";
+        assertTrue(greeting == "pkg.default2.pkg1.pkg.default.Hello");
         assertFalse(greeting.substring(0, 3) == "Hel");
 
         greeting = greeting + "!";
-        assertFalse(greeting == "Hello!");
+        assertFalse(greeting == "pkg.default2.pkg1.pkg.default.Hello!");
     }
 
     @Test

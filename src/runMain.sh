@@ -11,4 +11,4 @@ java  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 \
 
 
 # to disable java debug, compile it without debug info
-# javac -d out src/Main.java
+# javac -d out src/pkg.default2.pkg.default.Main.java

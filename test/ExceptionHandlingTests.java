@@ -1,9 +1,10 @@
 import org.junit.jupiter.api.Test;
+import pkg.yhan.time.Person;
 
 public class ExceptionHandlingTests{
     @Test
     public void catchMe() {
-        try(Employee employee = new Employee(42_000)) {
+        try(Person employee = new Person(42_000)) {
 
         } catch (Exception e) {
             throw new RuntimeException(e);

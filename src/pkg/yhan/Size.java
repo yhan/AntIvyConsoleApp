@@ -1,3 +1,5 @@
+package pkg.yhan;
+
 public enum Size {
     SMALL(1), MEDIUM(2), LARGE(3);
 
@@ -27,7 +29,7 @@ public enum Size {
     * */
     public static Size fromInt(int value) {
         if (value < 1 || value >= LOOKUP.length) {
-            throw new IllegalArgumentException("Invalid Size value: " + value);
+            throw new IllegalArgumentException("Invalid pkg.default2.pkg.default.Size value: " + value);
         }
         return LOOKUP[value];
     }

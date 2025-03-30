@@ -1,4 +1,4 @@
-package lru;
+package pkg.yhan.lru;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

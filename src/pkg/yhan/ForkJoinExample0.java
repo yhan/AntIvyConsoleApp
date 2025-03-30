@@ -1,13 +1,11 @@
+package pkg.yhan;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
-
-
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.RecursiveAction;
 
 public class ForkJoinExample0 {
     public static void main(String[] args) throws InterruptedException {

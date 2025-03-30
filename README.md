@@ -181,7 +181,7 @@ Manually Add lib/ as a "Library" in IntelliJ (Best Option)
 
 Why you have to do this?  lib/ is in the classpath for both produciton & test code
 ```
-  <!-- Compile Main Source Code -->
+  <!-- Compile pkg.yhan.pkg.default.pkg.yhan.Main Source Code -->
     <target name="compile">
         <mkdir dir="${build.dir}"/>
         <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
@@ -235,7 +235,7 @@ It only looks at the test folder and its manually assigned dependencies.
 3️⃣ The test folder should turn green (indicating it's a test source root).  
 4️⃣ Rebuild the project:
 
-Click Build → Rebuild Project  [Main.class](../temp/org/apache/ivy/Main.class)
+Click Build → Rebuild Project  [pkg.yhan.pkg.default.pkg.yhan.Main.class](../temp/org/apache/ivy/Main.class)
 OR run Ctrl + Shift + F9 (Recompile)  
 🚀 Now IntelliJ should recognize and compile your test files!  
 
