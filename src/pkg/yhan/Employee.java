@@ -22,6 +22,10 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
+    public Employee() {
+        this(null, 0, LocalDate.EPOCH);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
