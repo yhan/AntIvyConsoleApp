@@ -1,6 +1,7 @@
 package pkg.yhan;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -37,4 +38,15 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(name, salary, hireDate);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                ", hireDate=" + hireDate +
+                '}';
+    }
 }
+
+

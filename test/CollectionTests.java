@@ -1,8 +1,10 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pkg.yhan.Employee;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,6 +22,19 @@ public class CollectionTests {
     }
 
     @Test
+    public void copyToArray() {
+        ArrayList<Integer> list = new ArrayList<>(10);
+        for (int i = 0; i <= 10; i++) {
+            list.add(i);
+        }
+        Integer[] arr = new Integer[list.size()];
+        Integer[] array = list.toArray(arr);
+
+        Assertions.assertArrayEquals(arr, array);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
     public void enumTest() {
         Status s = Status.DONE;
         int intValue = s.getValue(); // returns 30
@@ -33,12 +48,13 @@ public class CollectionTests {
         var al = new ArrayList();
 //        var al = new ArrayList<>();
 //        var al = new ArrayList<Object>();
-        al.add( new Employee());
+        al.add(new Employee());
         al.add("test");
 
         System.out.println(al);
 
     }
+
     @Test
     public void main() throws NoSuchFieldException {
         var list = new ArrayList<String>(); // Inferred as ArrayList<String>

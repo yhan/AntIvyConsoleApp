@@ -15,7 +15,7 @@
 
     <property name="dist.dir" value="dist"/>
     <property name="jar.name" value="AntIvyConsoleApp.jar"/>
-
+    <property name="generated.src.dir" value="build/generated/sources/annotations"/>
 
     <!-- Register Ivy Task -->
     <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant">
@@ -56,21 +56,43 @@
         <ivy:report todir="${report.dir}"/>
     </target>
 
-    <target name="clean">
+    <target name="clean" depends="ivy-resolve">
         <delete dir="${build.dir}"/>
     </target>
 
     <!-- Compile Source Code -->
-    <target name="compile">
+    <target name="compile" depends="clean">
+        <delete dir="${build.dir}" failonerror="false"/>
         <mkdir dir="${build.dir}"/>
+        <delete dir="${generated.src.dir}" failonerror="false"/>
+        <mkdir dir="${generated.src.dir}"/>
+        <path id="processor.path">
+            <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        </path>
+        <pathconvert property="processor.path.string" pathsep="${path.separator}">
+            <path refid="processor.path"/>
+        </pathconvert>
         <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
-            <include name="**/*.java"/>
-<!--            <compilerarg value="-processor" />-->
-<!--            <compilerarg value="org.openjdk.jmh.generators.BenchmarkProcessor" />-->
             <classpath>
-                <fileset dir="${lib.dir}">
-                    <include name="**/*.jar"/>
-                </fileset>
+                <fileset dir="${lib.dir}" includes="**/*.jar"/>
+            </classpath>
+
+            <compilerarg value="-Xlint:all"/>
+
+            <!-- Enable annotation processing for JMH -->
+            <compilerarg value="-processorpath"/>
+            <compilerarg value="${processor.path.string}"/>
+            <compilerarg value="-s"/>
+            <compilerarg value="${generated.src.dir}"/>
+            <compilerarg value="-processor"/>
+            <compilerarg value="org.openjdk.jmh.generators.BenchmarkProcessor"/>
+        </javac>
+
+        <!-- Compile generated sources -->
+        <javac srcdir="${generated.src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath>
+                <pathelement location="${build.dir}"/>
+                <fileset dir="${lib.dir}" includes="**/*.jar"/>
             </classpath>
         </javac>
     </target>
@@ -112,16 +134,23 @@
         </java>
     </target>
 
-    <!-- Create JAR file -->
     <target name="jar" depends="compile">
+        <delete dir="${dist.dir}" failonerror="false"/>
         <mkdir dir="${dist.dir}"/>
+
         <jar destfile="${dist.dir}/${jar.name}" basedir="${build.dir}">
             <manifest>
-                <attribute name="pkg.yhan.Main-Class" value="pkg.yhan.Main"/>
+                <attribute name="Main-Class" value="pkg.yhan.Main"/>
             </manifest>
+
+            <fileset dir="${build.dir}"/>
+<!--            create a fat jar including all dependencies-->
+            <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+
+            <exclude name="test-classes/**"/>
+            <exclude name="test-results/**"/>
         </jar>
     </target>
-
 
     <!-- Run the Application -->
     <target name="run" depends="compile">
