@@ -77,10 +77,11 @@ public class CollectionTests {
     @Test
     public void exceedCapacity() {
         ArrayList<X> list = new ArrayList<>(1);
-        list.add(new X());
-        list.set(0, new X());
+        list.add(new X(1));
+        list.set(0, new X(2));
+        list.add(0, new X(3));
 
-        System.out.println(list.toArray());
+        System.out.println(Arrays.toString(list.toArray()));
     }
 
 }
