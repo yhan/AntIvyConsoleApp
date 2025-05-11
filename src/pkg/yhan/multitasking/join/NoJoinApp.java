@@ -16,11 +16,8 @@ public class NoJoinApp {
         long nanos = (end - start);
         System.out.println("Loop duration: " + nanos + " ns");
 
+        // if noJoin is daemon thread, JVM terminates before noJoin runs to the end
+        // if it is NON DAEMON thread, JVM is retained until noJoin terminates
         //noJoin.join();
     }
-} /* Output:
-Grumpy was interrupted. isInterrupted(): false
-Doc join completed
-Sleepy has awakened
-Dopey join completed
-*/
+}

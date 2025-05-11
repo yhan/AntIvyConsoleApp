@@ -1,7 +1,7 @@
 package pkg.yhan.multitasking.join;
 
 class Sleeper extends Thread {
-    private int duration;
+    private final int duration;
 
     public Sleeper(String name, int sleepTime) {
         super(name);
@@ -21,7 +21,7 @@ class Sleeper extends Thread {
 }
 
 class Joiner extends Thread {
-    private Sleeper sleeper;
+    private final Sleeper sleeper;
 
     public Joiner(String name, Sleeper sleeper) {
         super(name);
